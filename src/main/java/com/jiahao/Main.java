@@ -10,9 +10,9 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v1/customers")
 public class Main {
-    private final CustomerRespository customerRepository;
+    private final CustomerRepository customerRepository;
 
-    public Main(CustomerRespository customerRepository) {
+    public Main(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
@@ -22,33 +22,24 @@ public class Main {
 
     @GetMapping
     public List<Customer> getCustomers(){
-        return this.customerRepository.findAll();
+        return null;
     }
 
     record NewCustomerRequest(String name, String email, Integer age){}
 
     @PostMapping
     public void addCustomer(@RequestBody NewCustomerRequest request){
-        Customer customer = new Customer();
-        customer.setName(request.name());
-        customer.setAge(request.age());
-        customer.setEmail(request.email());
-        customerRepository.save(customer);
+        // TODO
     }
 
     @DeleteMapping("{customerId}")
     public void deleteCustomer(@PathVariable("customerId") Integer id){
-        customerRepository.deleteById(id);
+        // TODO
     }
 
     @PutMapping("{customerId}")
     public void updateCustomer(@PathVariable("customerId") Integer id, @RequestBody NewCustomerRequest request){
-        Customer customer = new Customer();
-        customer.setId(id);
-        customer.setName(request.name());
-        customer.setAge(request.age());
-        customer.setEmail(request.email());
-        customerRepository.save(customer);
+        // TODO
     }
 
 }
